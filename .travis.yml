@@ -1,0 +1,21 @@
+sudo: required
+language: go
+go:
+  - 1.9.x
+env:
+  - RELEASE_TAG=$TRAVIS_TAG GIT_VERSION=$TRAVIS_COMMIT
+
+go_import_path: github.com/yunify/qingcloud-k8s-device-plugin
+
+script: make
+
+deploy:
+  provider: releases
+  api_key:
+    secure: 3xN1RiKaiAcrrRdUQ8D0s5F4gTG/7B084QwJJHuKq9ko7bqbRAnI2Do0TZJ2nJs0sC3yDGowdJz+MHn2wj7TK0ANpjBeUp6zY5NbcxMNB5EFDgZoW+3MWXsKEbaCiM1WAeHXCwbYWeWNFJtFcU8l/anmDMlLmrvs2Iv9Uatk33OVVA6zKWfYIGlQ8BjBd7g7pLkYpukVZlwN9G4TGc/QI8hGLUw9LcfZ4wMlk8S8xukCc2WNHNXFn+mcOKxrVilz0AYd4m1eBZN2RW5kxKpGIp1ifzk/LFwGGD4WFNtuUei+SoU8IesY9AoF1DKIqXH9gAVWaOs/LQdn123+xD11W3TZZOWuClDi6gKV/NcT1zGGF/EhqvSPDgBCWLbrrKyLGrEOIkLqyHJvjDdkA9c12r1ALomFOaoh48+K27/2/yBPxFTADwv57bN3u0ME1mz9l4GrqUU/xH/DGEsZgYEKeLPWXwdJ3QomHFwUK8Dp2pCV43vxUKmvHc0BzoYVcHcZa9KDYYOA3m8l5nye+B027Aa62zucc8sG0Hf64J6KQoxtPpS/PRWgFmiMFuFx9gjw/yNock1Fb9Xj6BNhoMWsOJjt5u+tVPZ4WuEy4r99XtAsBk6VOHkmOoU+VidqXPf4DZBCeV6lXFEvs1k+bNFzVDtmMH+hHzQrvBSGhBHt0AI=
+  file: out/qingcloud_gpu_linux_x86_64.tar.gz
+  skip_cleanup: true
+  on:
+    repo: yunify/qingcloud-k8s-device-plugin
+	tags: true
+
