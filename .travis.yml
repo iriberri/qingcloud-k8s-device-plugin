@@ -17,5 +17,5 @@ deploy:
   skip_cleanup: true
   on:
     repo: yunify/qingcloud-k8s-device-plugin
-	tags: true
+    tags: true
 
